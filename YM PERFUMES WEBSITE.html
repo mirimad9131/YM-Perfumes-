@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YM PERFUME | Luxury Collection</title>
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --gold: #d4af37;
+            --gold-soft: #fcf6ba;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --text: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Garamond', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Logo Styling */
+        .brand-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        /* Hero Header */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            letter-spacing: 15px;
+            background: linear-gradient(to right, #bf953f, var(--gold-soft), var(--gold), #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        /* Performance Badges */
+        .metrics {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-item {
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: var(--gold-soft);
+        }
+
+        /* Product Grid */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        /* JavaScript Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 30px;
+            transition: 0.4s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--gold);
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h2 { color: var(--gold); margin-bottom: 10px; font-size: 1.8rem; }
+
+        .analysis {
+            margin: 20px 0;
+            font-size: 0.9rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .pros { color: #4ade80; }
+        .cons { color: #f87171; }
+
+        .analysis ul { list-style: none; margin-top: 5px; }
+        .analysis li::before { content: "• "; margin-right: 5px; }
+
+        /* Buttons */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-wa { background: #25d366; color: white; }
+        .btn-ep { background: var(--gold); color: #000; }
+        .btn:hover { opacity: 0.8; transform: scale(1.02); }
+
+        /* Suppliers Section */
+        .suppliers {
+            background: #111;
+            padding: 80px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .supplier-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .supplier-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .safety-badge {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ade80;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <img src="2.png" alt="YM PERFUME Logo" class="brand-logo">
+        <h1>YM PERFUME brand</h1>
+        <p>"Scents that elevate your senses elegantly"</p>
+        <div class="metrics">
+            <span class="metric-item">⏳ 12H Longevity</span>
+            <span class="metric-item">🚀 8H Projection</span>
+            <span class="metric-item">🌿 Non-Allergic</span>
+            <span class="metric-item">🌿 Affordable price</span>
+            <span class="metric-item">🌿 Multilpe fragrances</span>
+            <span class="metric-item">🌿 especiaalyfor gifts</span>
+            <span class="metric-item">🌿 Most use in office collage uni etc.</span>
+
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card reveal">
+            <img src="YM Perfumes.jpg" alt="Office for Men">
+            <h2>inspired by Office for Men</h2>
+            <p>A commanding scent for the professional arena.</p>
+             <p>It is also a unisex perfume, with hour of lasting.</p>
+              <p>It is weet fragrance especiaaly for summer & Winter.</p>
+               <p>especiaaly no any side effects and also affordable price </p>
+                <p>especially for those people who is allergy from perfumes</p>
+            <div class="analysis">
+                <div class="pros"><strong>Advantages</strong><ul><li>Sharp & Clean</li><li>High Confidence</li></ul></div>
+                <div class="cons"><strong>Considerations</strong><ul><li>Day Use Only</li><li>Formal Tone</li></ul></div>
+            </div>
+            <div class="btn-group">
+                <button onclick="orderWhatsApp('Office for Men')" class="btn btn-wa">WhatsApp</button>
+                <button onclick="payEasyPaisa()" class="btn btn-ep">EasyPaisa</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <img src="ddddddddd.jpg" alt="Velvet Aura">
+            <h2>inspired by Bomb shell</h2>
+             <p>A commanding scents especially for ladies.</p>
+             <p>It is also a beautiful packed for gift etc.</p>
+              <p>It is weet fragrance especiaaly for every season.</p>
+               <p>especiaaly no any side effects and also affordable price </p>
+                <p>especially for those ladies They goes to functions or job</p>
+            <p>A sophisticated blend of gold-tier floral elegance.</p>
+            <div class="analysis">
+                <div class="pros"><strong>Advantages</strong><ul><li>Premium Sillage</li><li>Skin Friendly</li></ul></div>
+                <div class="cons"><strong>Considerations</strong><ul><li>Rich Opening</li><li>Special Occasions</li></ul></div>
+            </div>
+            <div class="btn-group">
+                <button onclick="orderWhatsApp('Velvet Aura')" class="btn btn-wa">WhatsApp</button>
+                <button onclick="payEasyPaisa()" class="btn btn-ep">EasyPaisa</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <img src="Pink crystal.jpg" alt="Pink crystal">
+            <h2>inspired by vershe crystal</h2>
+            <p>The essence of mystery and midnight elegance.</p>
+              <p>A commanding scents especially for ladies.</p>
+             <p>It is also a beautiful packed for gift etc.</p>
+              <p>It is weet fragrance especiaaly for every season.</p>
+               <p>especiaaly no any side effects and also affordable price </p>
+                <p>especially for those ladies They goes to functions or job</p>
+            <p>A sophisticated blend of gold-tier floral elegance.</p>
+           
+            <div class="analysis">
+                <div class="pros"><strong>Advantages</strong><ul><li>Exotic Aroma</li><li>Party Perfect</li></ul></div>
+                <div class="cons"><strong>Considerations</strong><ul><li>Niche Scent</li><li>Summer Nights</li></ul></div>
+            </div>
+            <div class="btn-group">
+                <button onclick="orderWhatsApp('Midnight Jasmine')" class="btn btn-wa">WhatsApp</button>
+                <button onclick="payEasyPaisa()" class="btn btn-ep">EasyPaisa</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <img src="IMG-20260128-WA0118.jpg" alt="Madysin">
+            <h2>inspiredby one million</h2>
+            <p>Bold spice and leather for the brave.</p>
+              <p>A commanding scents especially for ladies.</p>
+             <p>It is also a beautiful packed for gift etc.</p>
+              <p>It is sweet fragrance especiaaly for Winter season.</p>
+               <p>especiaaly no any side effects and also affordable price </p>
+                <p>especially for those person /students They goes to functions or job or collage</p>
+            <p>A sophisticated blend of gold-tier floral elegance.</p>
+            <div class="analysis">
+                <div class="pros"><strong>Advantages</strong><ul><li>Winter Power</li><li>Unique Profile</li></ul></div>
+                <div class="cons"><strong>Considerations</strong><ul><li>Very Intense</li><li>Acquired Taste</li></ul></div>
+            </div>
+            <div class="btn-group">
+                <button onclick="orderWhatsApp('Madysin')" class="btn btn-wa">WhatsApp</button>
+                <button onclick="payEasyPaisa()" class="btn btn-ep">EasyPaisa</button>
+            </div>
+        </div>
+    </main>
+
+    <section class="suppliers reveal">
+        <h2>Executive Management</h2>
+        <div class="supplier-grid">
+            <div class="supplier-card">
+                <img src="imdoo.jpg.png" alt="Imad Ali">
+                <h3>Imad Ali</h3>
+                <p>Founder X CEO &supplier</p>
+            </div>
+            <div class="supplier-card">
+                <img src="yasin khan.jpg" alt="Yasin">
+                <h3>Yasin</h3>
+                <p>Co-Founder & Suppliers</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Support: 03406492802</p>
+        <div class="safety-badge">🛡️ Certified Safe & Non-Allergic</div>
+    </footer>
+
+    <script>
+        // 1. WhatsApp Order Function
+        function orderWhatsApp(perfumeName) {
+            const phoneNumber = "923406492802";
+            const message = `Hello YM PERFUME, I would like to order: ${perfumeName}. Please provide details.`;
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // 2. EasyPaisa Payment Function
+        function payEasyPaisa() {
+            const number = "03406492802";
+            // Copy to clipboard
+            navigator.clipboard.writeText(number);
+            alert("EasyPaisa Number (03406492802) copied to clipboard!\n\nPlease send the payment and share the screenshot on WhatsApp.");
+        }
+
+        // 3. Reveal Animation on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Run once on load to show elements already in view
+        window.onload = reveal;
+    </script>
+</body>
+</html>
